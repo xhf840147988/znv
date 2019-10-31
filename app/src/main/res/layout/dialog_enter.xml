@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="8dp">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/closeView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:padding="10dp"
+                    android:src="@mipmap/ic_close_black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:src="@mipmap/ic_logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="小红书商城"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scrollbars="none">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:textColor="#444444"
+                    android:text="个人商家入驻指南：\n一、准备资料:\n1.个人身份信息-收款商业银行卡账号\n
+2.品牌名\n3.所属国家\n4.品牌头图（1张750*750像素图，大小不超过5M,支持jpg、png格式）
+\n5.品牌宣传图（可上传9张750*750像素图，大小不超过5M,支持jpg、png格式）\n6.品牌描述（30个字符以内）
+\n7.品牌简介（140个字符以内）\n8.《品牌方开具的商家销售的授权书》\n\n\n二、个人产品可直接上传身份信息和商业银行卡账号
+及产品略图\n\n\n三、交易流程：\n用户下单>平台打款给商家>商家收款无误后发货（每笔订单平台将抽取10%作为平台佣金）
+\n\n\n四、商家每个自然月有12自然分，当月累计扣分达12分将自动下架商品" />
+
+                </ScrollView>
+
+                <TextView
+                    android:id="@+id/applyView"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/shape_red_bg"
+                    android:gravity="center"
+                    android:text="立即申请入驻"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
