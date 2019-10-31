@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80040308">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/pic02" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="贴心提示"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="近期有不发分子以闹市见面给钱实行不法行为\n用户非平台邀约所造成的一切后果由用户自行承担"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+
+        <Button
+            android:id="@+id/confirmView"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/button_bg"
+            android:gravity="center"
+            android:text="知道了"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
