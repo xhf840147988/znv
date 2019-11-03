@@ -1,11 +1,12 @@
 package com.xhf.sms.dialog;
 
+import android.view.Gravity;
 import android.view.View;
+
+import com.xhf.sms.base.BaseDialog;
 
 import androidx.annotation.LayoutRes;
 import androidx.fragment.app.FragmentManager;
-
-import com.xhf.sms.base.BaseDialog;
 
 
 public class CenterDialog extends BaseDialog {
@@ -17,7 +18,7 @@ public class CenterDialog extends BaseDialog {
     @LayoutRes
     private int mLayoutRes;
 
-    private int mGravity;
+    private int mGravity = Gravity.CENTER;
 
     private ViewListener mViewListener;
 

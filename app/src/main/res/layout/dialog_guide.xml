@@ -36,18 +36,20 @@
             android:textSize="16sp" />
 
 
-        <Button
-            android:id="@+id/confirmView"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="80dp"
-            android:background="@drawable/button_bg"
-            android:gravity="center"
-            android:text="知道了"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/confirmView"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="80dp"
+                android:background="@drawable/button_bg"
+                android:gravity="center"
+                android:text="知道了"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
 
     </LinearLayout>
 

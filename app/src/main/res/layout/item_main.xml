@@ -4,62 +4,168 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:orientation="vertical">
 
 
-        <ImageView
-            android:id="@+id/imgView"
+        <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_item_img" />
+            android:layout_height="wrap_content">
 
-        <ImageView
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/pic17" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#80CFCAC6"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/distanceView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:drawableStart="@mipmap/pic19"
+                    android:drawablePadding="4dp"
+                    android:text="0.1KM"
+                    android:textSize="12sp" />
+
+                <FrameLayout
+                    android:id="@+id/flStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@id/tvScore"
+                    android:layout_alignParentEnd="true">
+
+                    <com.xhf.sms.RatingBarView
+                        android:id="@+id/starView"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="right"
+                        app:starCount="5"
+                        app:starEmpty="@mipmap/pic21"
+                        app:starFill="@mipmap/pic20"
+                        app:starImageSize="15dp" />
+
+                </FrameLayout>
+
+
+                <TextView
+                    android:id="@+id/tvScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/flStar"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="12dp"
+                    android:text="评分"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/nameView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_item_tip_img"
-            android:layout_below="@id/imgView"
-            android:padding="4dp"/>
+            android:layout_below="@id/frameLayout"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="张玉"
+            android:textColor="@color/txt_color"
+            android:textSize="14sp" />
 
 
         <TextView
-            android:id="@+id/infoView"
+            android:id="@+id/ageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="8dp"
+            android:layout_alignBaseline="@id/nameView"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/nameView"
+            android:background="@drawable/shape_label_bg"
+            android:paddingStart="8dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="2dp"
+            android:text="22岁"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/jobView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/nameView"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/ageView"
+            android:background="@drawable/shape_label_bg"
+            android:paddingStart="8dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="2dp"
+            android:text="幼师"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/rentTimesView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameView"
             android:layout_marginStart="8dp"
-            android:layout_below="@id/imgView"
-            android:text="      挂耳运动单入耳"/>
-
-
-
+            android:layout_marginTop="4dp"
+            android:text="已出租22次"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/priceView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:layout_below="@id/infoView"
-            android:textColor="#FF5722"/>
+            android:layout_below="@id/rentTimesView"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="15dp"
+            android:text="日租300元"
+            android:textColor="#EE8D29"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
 
         <TextView
-            android:id="@+id/payView"
-            android:layout_width="match_parent"
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:layout_marginEnd="8dp"
-            android:textSize="11sp"
             android:layout_alignBaseline="@id/priceView"
-            android:layout_below="@id/infoView"
-            android:textColor="#999999"/>
-
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:enabled="false"
+            android:background="@drawable/button_bg2"
+            android:paddingStart="5dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="2dp"
+            android:text="找我聊聊"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
 
 
     </RelativeLayout>

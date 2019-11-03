@@ -7,4 +7,9 @@
 
     <color name="transparent">#00000000</color>
     <color name="red">#FF455A</color>
+    <color name="default_color">#B600D5</color>
+    <color name="women_color">#DE82B1</color>
+    <color name="man_color">#0070BB</color>
+    <color name="txt_color">#8F01A7</color>
+
 </resources>

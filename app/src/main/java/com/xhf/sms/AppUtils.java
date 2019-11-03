@@ -7,6 +7,9 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by xhf on 2019/10/17
  */
@@ -39,5 +42,12 @@ public class AppUtils {
         sb.append((ipInt >> 16) & 0xFF).append(".");
         sb.append((ipInt >> 24) & 0xFF);
         return sb.toString();
+    }
+
+    public static long getMonthTime() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date(System.currentTimeMillis()));
+        calendar.add(Calendar.MONTH, -1);
+        return calendar.getTimeInMillis();
     }
 }

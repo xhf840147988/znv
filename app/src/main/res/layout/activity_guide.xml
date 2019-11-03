@@ -1,169 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
 
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/pic04"
+        android:layout_marginTop="70dp"
         android:orientation="vertical">
 
-
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="230dp"
-            android:layout_marginEnd="12dp">
+            android:layout_height="match_parent"
+            android:background="@mipmap/pic04"
+            android:orientation="vertical"
+            >
 
-            <LinearLayout
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="230dp"
+                android:layout_marginEnd="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:lineSpacingMultiplier="1.2"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:text="        近期由于部分用户以租女友的名义在线下有非法行为(抢劫
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:lineSpacingMultiplier="1.2"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="        近期由于部分用户以租女友的名义在线下有非法行为(抢劫
 ,强奸,绑架,勒索)导致用户人身安全受到侵犯\n         2019年4月21日起为确保用户双方人身安全,塑造良好的
 租赁环境平台双方用户均需进行实名认证。"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="20dp"
-                    android:text="安全提醒："
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:lineSpacingMultiplier="1.2"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:text="1.平台不会以任何形式向用户索要保证金等费用。\n2.雇佣双方未见面之前请勿向对方支付任何费用。\n3.平台无需预先缴费,请勿相信非实名用户以任何借口的邀约。"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:lineSpacingMultiplier="1.2"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:text="用户租赁均为匿名租赁,非特殊情况平台不会向第三方透露用户信息。\n如遇紧急情况可在平台点击一键报警,平台将严厉打击非法行为。"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:text="合作机构"
-                    android:textColor="#333333"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_weight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/pic06" />
+                        android:layout_marginTop="20dp"
+                        android:text="安全提醒："
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/pic07" />
+                        android:layout_marginTop="10dp"
+                        android:lineSpacingMultiplier="1.2"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="1.平台不会以任何形式向用户索要保证金等费用。\n2.雇佣双方未见面之前请勿向对方支付任何费用。\n3.平台无需预先缴费,请勿相信非实名用户以任何借口的邀约。"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
 
-                    <ImageView
-                        android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_weight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/pic08" />
+                        android:layout_marginTop="20dp"
+                        android:lineSpacingMultiplier="1.2"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="用户租赁均为匿名租赁,非特殊情况平台不会向第三方透露用户信息。\n如遇紧急情况可在平台点击一键报警,平台将严厉打击非法行为。"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:text="合作机构"
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_weight="1"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/pic06" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/pic07" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_weight="1"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/pic08" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="30dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_weight="1"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/pic09" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/pic10" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_weight="1"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/pic11" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="30dp"
-                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_weight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/pic09" />
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/pic10" />
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_weight="1"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/pic11" />
-                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
-            </LinearLayout>
+            <Button
+                android:id="@+id/btnCommit"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/button_bg"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@android:color/white"
+                android:textSize="22sp" />
 
 
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
 
-        <Button
-            android:id="@+id/btnCommit"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/button_bg"
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@mipmap/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="租女友"
+            android:textColor="#333333"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:id="@+id/flProcess"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:text="确定"
-            android:textColor="@android:color/white"
-            android:textSize="22sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系统检测到您所在的位置为"
+                android:textColor="#333333"
+                android:textSize="20sp" />
 
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvPostion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:drawableStart="@mipmap/pic12"
+                android:drawablePadding="8dp"
+                android:textColor="#F0731E"
+                android:textSize="16sp" />
 
-</ScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="正在为你搜索附近女友请稍后...."
+                android:textColor="#666666" />
+
+            <com.xhf.sms.SaleProgressView
+                android:id="@+id/progressView"
+                android:layout_width="270dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp" />
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>

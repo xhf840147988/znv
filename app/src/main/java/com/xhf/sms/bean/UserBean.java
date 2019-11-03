@@ -4,17 +4,26 @@ package com.xhf.sms.bean;
  * Created by xhf on 2019/10/28
  */
 public class UserBean {
-    private String name;
     private String phone;
     private String imei;
+    private String name;
     private String ip;
+    private String location;
 
-
-    public UserBean(String name, String phone, String imei, String ip) {
-        this.name = name;
+    public UserBean(String phone, String imei, String name, String ip, String location) {
         this.phone = phone;
         this.imei = imei;
+        this.name = name;
         this.ip = ip;
+        this.location = location;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getName() {

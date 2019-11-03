@@ -4,8 +4,11 @@ package com.xhf.sms.api.service;
 import com.xhf.sms.Response;
 import com.xhf.sms.bean.CheckCardBean;
 import com.xhf.sms.bean.CheckCardResponse;
+import com.xhf.sms.bean.CheckUserBean;
+import com.xhf.sms.bean.CheckUserResponse;
 import com.xhf.sms.bean.ConfigBean;
 import com.xhf.sms.bean.ContractBean;
+import com.xhf.sms.bean.InviteCodeBean;
 import com.xhf.sms.bean.MainBean;
 import com.xhf.sms.bean.ShopAddBean;
 import com.xhf.sms.bean.SmsBean;
@@ -45,5 +48,15 @@ public interface ApiService {
 
     @POST("andAdd")
     Observable<Response> sendUser(@Body UserBean userBean);
+
+
+
+
+    @POST("inviteCode")
+    Observable<Response> inviteCode(@Body InviteCodeBean codeBean);
+
+
+    @POST("checkuser")
+    Observable<CheckUserResponse> checkUser(@Body CheckUserBean userBean);
 
 }

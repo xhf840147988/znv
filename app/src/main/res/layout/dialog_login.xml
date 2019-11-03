@@ -8,52 +8,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:background="@mipmap/ic_bg_dialog"
+        android:background="@drawable/shape_dialog_white"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/closeView"
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="14dp"
-            android:src="@mipmap/ic_close" />
+            android:text="用户登录"
+            android:textSize="18sp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:textColor="#333333"/>
 
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:padding="8dp"
-                android:src="@mipmap/ic_dialog_login_tip"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="商家登录"
-                android:textSize="12sp"
-                android:textColor="@color/red"
-                android:layout_gravity="center"/>
-
-
-        </FrameLayout>
 
 
         <EditText
             android:id="@+id/accountView"
             android:layout_width="match_parent"
             android:background="@drawable/shape_psd_bg"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:hint="请输入账号"
+            android:layout_marginTop="20dp"
+            android:hint="账号"
             android:paddingStart="8dp"
             android:textSize="14sp"
             android:layout_marginEnd="30dp"/>
@@ -63,27 +40,58 @@
             android:id="@+id/psdView"
             android:layout_width="match_parent"
             android:background="@drawable/shape_psd_bg"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
-            android:hint="请输入密码"
+            android:hint="密码"
             android:paddingStart="8dp"
             android:textSize="14sp"
             android:layout_marginEnd="30dp"/>
 
 
-        <TextView
+        <Button
             android:id="@+id/confirmView"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:text="登录"
-            android:background="@drawable/shape_red_bg"
+            android:background="@drawable/button_bg"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="10dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="您是否想加入我们"
+                android:textColor="#666666"
+                android:layout_marginStart="30dp"/>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:textSize="14sp"
+                android:padding="10dp"
+                android:textColor="@color/default_color"
+                android:text="立即注册"/>
+        </LinearLayout>
 
 
 
